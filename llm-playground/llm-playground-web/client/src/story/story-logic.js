@@ -24,6 +24,9 @@ export function useHandleStoryResponse() {
         if (response.storyText) {
             newMessages.push({ role: 'assistant', content: response.storyText });
         }
+        if (response.strangerResponse) {
+            newMessages.push({ role: 'assistant', content: response.strangerResponse});
+        }
 
         setAppState({ messages: [...newMessages] });
 
