@@ -1,4 +1,4 @@
-import {useCallback, useEffect, useRef} from 'react';
+import {useRef} from 'react';
 import {useAppState, useSetAppState} from '../app-state/AppStateProvider';
 import Timer from '../utils/timer';
 
@@ -28,10 +28,11 @@ export function useHandleStoryResponse() {
                 content: "You made it! You charge your phone, navigate to the office and run as fast as you can." +
                     "\nTaking a deep breath, you knock on your new boss's office door."
             });
-            setAppState({messages: [...newMessages]});
+            setAppState({messages: [...newMessages], curStrangerIdx:strangerIdx});
 
-            idleTimer.current = new Timer(2000, () => {
+            idleTimer.current = new Timer(5000, () => {
                 console.log("times up!")
+                strangerIdx++;
                 newMessages.push({
                     role: 'assistant', content: "\n'Come in!' a familiar voice called from the room." +
                         "\nYou open the door, and your heart drops." +
@@ -43,7 +44,7 @@ export function useHandleStoryResponse() {
                 setAppState({messages: [...newMessages]});
             });
             idleTimer.current.start();
-            setAppState({messages: [...newMessages]});
+            setAppState({messages: [...newMessages], curStrangerIdx:strangerIdx});
         }
 
         if (response.storyText && response.storyTextImportance > 0.65) {

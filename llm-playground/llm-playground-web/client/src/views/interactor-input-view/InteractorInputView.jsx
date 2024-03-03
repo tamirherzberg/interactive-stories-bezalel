@@ -6,7 +6,8 @@ import { useHandleStoryResponse } from "../../story/story-logic";
 
 export default function InteractorInputView() {
 
-    const { messages, status, inputMessage } = useAppState();
+    const { messages, status, inputMessage} = useAppState();
+    let {curStrangerIdx} = useAppState();
     const setAppState = useSetAppState();
 
 
@@ -45,7 +46,7 @@ export default function InteractorInputView() {
     }, [messages, inputMessage]);
 
 
-
+    console.log(curStrangerIdx);
     return (
         <div
             id="interactor-box"
@@ -56,13 +57,15 @@ export default function InteractorInputView() {
                 fontFamily: 'Arial'
             }}
         >
-            Tsila:&ensp;<input
+            <img src="https://media1.tenor.com/m/07cmziHz9hQAAAAC/curb-your-enthusiasm-curb-your-enthusiasm-outro.gif" alt="FIN" style={{display: curStrangerIdx == 4 ? 'inherit':'none'}}/>
+            <div style={{display: curStrangerIdx == 3 ? 'none': 'inherit'}}>Tsila:&ensp;</div><input
                 id="interactor-text-input"
                 value={inputMessage}
                 onKeyDown={e => { if (e.key === 'Enter') send() }}
                 onChange={e => setAppState({ inputMessage: e.target.value })}
+                style={{display: curStrangerIdx == 3 ? 'none': 'inherit'}}
             />
-            <button onClick={send}>Send</button>
+            <button onClick={send} style={{display: curStrangerIdx == 3 ? 'none': 'inherit'}}>Send</button>
             {
                 status === 'error' && 'Something is broken 😵‍💫'
             }
