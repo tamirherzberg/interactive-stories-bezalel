@@ -24,7 +24,7 @@ export default function StoryBodyView() {
                         key={'msg' + i}
                         className={`message-${msg.role}`}
                     >
-                        {msg.content}
+                        {(msg.role=== 'user'? 'Tsila: ':'')+ msg.content}
                     </p>
                     )
                 })}

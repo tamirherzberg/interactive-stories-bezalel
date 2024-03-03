@@ -55,7 +55,7 @@ export default function InteractorInputView() {
                 color: status === 'error' ? 'red' : 'auto'
             }}
         >
-            <input
+            Tsila:&ensp;<input
                 id="interactor-text-input"
                 value={inputMessage}
                 onKeyDown={e => { if (e.key === 'Enter') send() }}
