@@ -1,20 +1,16 @@
-import { useCallback, useEffect, useRef } from 'react';
-import { useAppState, useSetAppState } from '../app-state/AppStateProvider';
+import {useCallback, useEffect, useRef} from 'react';
+import {useAppState, useSetAppState} from '../app-state/AppStateProvider';
 import Timer from '../utils/timer';
 
 export function useHandleStoryResponse() {
-    const secondStrangerPrompt = "Set goalProgress to 0. You are now acting as the next person in line: Bracha, an elder lady, dressed very elegantly. She is sarcastic, witty and cares a lot about her time.\n Condition: She will only let the player pass if they say or do something that make them look stupid or embarrassing.";
-    const thirdStrangerPrompt = "Set goalProgress to 0. You are now acting as the next person in line: Vika, a 17 year old goth teen. She appreciates of the darker side of life, mysterious beauty, dark aesthetics and art. She listens to heavy metal, dresses in black clothes and has multiple piercings and tattoos.\n Condition: She will only let the player pass if they talk to her about one of her interests, say a deep philosophical remark or compliment her.";
+    const nextStrangerPromptPrefix = "Set 'goalProgress' to 0. Set the next 'storyTextImportance' to 1. Use 'storyText' to introduce the player to the next person in line. You are now acting as the next person in line: "
+    const secondStrangerPrompt = "Bracha, an elder lady, dressed very elegantly. She is sarcastic, witty and cares a lot about her time.\n Condition: She will only let the player pass if they say or do something embarrassing or awkward or makes them look stupid, or insult her somehow.";
+    const thirdStrangerPrompt = "Vika, a 17 year old Goth-kid She listens to heavy metal, hates everything mainstream and smokes cigarette. She wears heavy makeup, dresses in black clothes and has tattos.\n Condition: She will only let the player pass if they get to know her, talk to her about one of her interests, say a deep philosophical remark or compliment her.";
 
-    const { inputMessage } = useAppState();
+    const {curStrangerIdx, endingLine} = useAppState();
     const setAppState = useSetAppState();
     const idleTimer = useRef();
-    const {curStrangerIdx} = useAppState();
     let strangerIdx = curStrangerIdx;
-
-    useEffect(() => {
-        idleTimer.current?.cancel();
-    }, [inputMessage]);
 
     function handleStoryResponse(messages, response) {
         console.log(response)
@@ -22,65 +18,63 @@ export function useHandleStoryResponse() {
 
         const newMessages = [...messages];
 
-        // Test modifying the words limit:
-        // if (!isNaN(parseInt(newMessage))) {
-        //     newMessages.push({ role: 'system', content: `Your next storyText output has maximum length of ${newMessage} words.` })
-        // }
-
-        function gameWon() {
-            newMessages.push({ role: 'assistant', content: "Tsila made it! She charges her phone, navigates to the office and runs as fast as she can." +
-                    "\nTaking a deep breath, she knocks on her new boss's office door." +
-                    "\n'Come in!' a familiar voice called from the room." +
-                    "\nTsila opens the door, and her heart drops." +
-                    "\n'It was Bracha, grinning from behind the desk."});
-            setAppState({ messages: [...newMessages] });
+        if (strangerIdx === 1 && response.endingLine !== "") {
+            setAppState({endingLine: response.endingLine});
         }
 
-        if (response.goalProgress === 1) {
+        function gameWon() {
+            newMessages.push({
+                role: 'assistant',
+                content: "You made it! You charge your phone, navigate to the office and run as fast as you can." +
+                    "\nTaking a deep breath, you knock on your new boss's office door."
+            });
+            setAppState({messages: [...newMessages]});
+
+            idleTimer.current = new Timer(2000, () => {
+                console.log("times up!")
+                newMessages.push({
+                    role: 'assistant', content: "\n'Come in!' a familiar voice called from the room." +
+                        "\nYou open the door, and your heart drops." +
+                        "\n'It was Bracha, grinning from behind the desk."
+                });
+                newMessages.push({
+                    role: 'assistant', content: endingLine
+                });
+                setAppState({messages: [...newMessages]});
+            });
+            idleTimer.current.start();
+            setAppState({messages: [...newMessages]});
+        }
+
+        if (response.storyText && response.storyTextImportance > 0.65) {
+            newMessages.push({role: 'assistant', content: response.storyText});
+        }
+        if (response.strangerResponse) {
+            newMessages.push({role: 'assistant', content: response.strangerResponse});
+        }
+
+        if (response.goalProgress === 1 || response.goalProgress === '1') {
             strangerIdx++;
             switch (strangerIdx) {
                 case 0:
                     break;
                 case 1:
-                    newMessages.push({ role: 'assistant', content: "Rona let you pass her in line!" });
-                    newMessages.push({ role: 'system', content: secondStrangerPrompt });
+                    newMessages.push({role: 'assistant', content: "Rona let you pass her in line! There are now only two people left to cut in line!"});
+                    newMessages.push({role: 'system', content: nextStrangerPromptPrefix+secondStrangerPrompt});
                     break;
                 case 2:
-                    newMessages.push({ role: 'assistant', content: "Bracha let you pass her in line!" });
-                    newMessages.push({ role: 'system', content: thirdStrangerPrompt });
+                    newMessages.push({role: 'assistant', content: "Bracha let you pass her in line! There's only one person left before you can charge our phone!"});
+                    newMessages.push({role: 'system', content: nextStrangerPromptPrefix+thirdStrangerPrompt});
                     break;
                 case 3: {
-                    newMessages.push({ role: 'assistant', content: "Vika let you pass her in line!" });
+                    newMessages.push({role: 'assistant', content: "Vika let you pass her in line!"});
                     gameWon();
                     return;
                 }
             }
         }
-        if (response.storyText) {
-            newMessages.push({ role: 'assistant', content: response.storyText });
-        }
-        if (response.strangerResponse) {
-            newMessages.push({ role: 'assistant', content: response.strangerResponse});
-        }
 
-        setAppState({ messages: [...newMessages], curStrangerIdx: strangerIdx});
-        // TODO: end story with a long closing paragraph, and 'THE END' message.
-
-        // If the player is idle for a long period, add some content or a hint to push the story forward.
-        idleTimer.current = new Timer(15000, () => {
-            if (response.storyEvent && Math.random() > 0.7) {
-                // Trigger an independent story event:
-                newMessages.push({ role: 'assistant', content: response.storyEvent });
-                setAppState({ messages: [...newMessages]});
-            }
-
-            if (response.callToAction) {
-                // Apply call to action hint:
-                newMessages.push({ role: 'assistant', content: `(${response.callToAction})` });
-                setAppState({ messages: [...newMessages] });
-            }
-        });
-        idleTimer.current.start();
+        setAppState({messages: [...newMessages], curStrangerIdx: strangerIdx});
     }
 
     return handleStoryResponse;

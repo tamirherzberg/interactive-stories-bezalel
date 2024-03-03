@@ -12,6 +12,7 @@ type AppState = {
     status: 'idle' | 'loading' | 'error';
     inputMessage: '';
     curStrangerIdx: 0;
+    endingLine:'';
 }
 
 const initAppState: AppState = {
@@ -23,6 +24,7 @@ const initAppState: AppState = {
     status: 'idle',
     inputMessage: '',
     curStrangerIdx: 0,
+    endingLine:'',
 }
 
 const AppStateContext = createContext(initAppState);
