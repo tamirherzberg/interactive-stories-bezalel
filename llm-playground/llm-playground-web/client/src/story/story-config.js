@@ -25,9 +25,10 @@ const STORY_CONFIG_1 = {
             // If according to 'strangerResponse' the player can cut the current stranger in line, goalProgress equals 0.
             "goalProgress": 0,
             
-            // string, only populated when goalProgress equals 1. The story's ending line that Bracha says when Tsila comes into her office and realizes Bracha is her new boss.
+            // string, only populated when goalProgress equals 1. Always wrapped in apostrophes.
+            // The story's ending line that Bracha says when Tsila comes into her office and realizes Bracha is her new boss.
             // Should be a sarcastic comment making fun of the way Tsila embarrassed herself in line.
-            // For instance, if the embarrassing thing Tsila said is that she is almost peeing, a possible line could be 'Welcome to work dear, hope you don't pee on yourself here too!'
+            // For example, if the embarrassing thing Tsila said is that she is almost peeing, a possible line could be: 'Welcome to work dear, hope you don't pee on yourself here too!'
             "endingLine": "",
         }
 
