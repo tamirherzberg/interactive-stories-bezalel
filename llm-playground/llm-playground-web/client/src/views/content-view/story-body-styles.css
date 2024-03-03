@@ -16,9 +16,21 @@
     padding-bottom: 24px;
 }
 
-.message-assistant {
+.message-assistant-storyText {
     color: #666;
     font-style: italic;
+}
+
+.message-assistant-rona {
+    color: deeppink;
+}
+
+.message-assistant-bracha {
+    color: rebeccapurple;
+}
+
+.message-assistant-vika {
+    color: black;
 }
 
 .message-user {

@@ -20,9 +20,24 @@ export default function StoryBodyView() {
             <div id="text-column-cont">
                 {messages.map((msg, i) => {
                     if (msg.role === 'system') return null;
+                    let messageClassName = `message-${msg.role}`;
+                    if (msg.role === 'assistant') {
+                        if (msg.content.startsWith("Rona:")) {
+                            messageClassName += "-rona";
+                        }
+                        else if (msg.content.startsWith("Vika:")) {
+                            messageClassName += "-vika";
+                        }
+                        else if (msg.content.startsWith("Bracha:")) {
+                            messageClassName += "-bracha";
+                        }
+                        else {
+                            messageClassName += "-storyText";
+                        }
+                    }
                     return (<p
                         key={'msg' + i}
-                        className={`message-${msg.role}`}
+                        className={messageClassName}
                     >
                         {(msg.role=== 'user'? 'Tsila: ':'')+ msg.content}
                     </p>

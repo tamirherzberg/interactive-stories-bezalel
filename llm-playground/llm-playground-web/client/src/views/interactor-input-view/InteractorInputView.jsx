@@ -52,7 +52,8 @@ export default function InteractorInputView() {
             style={{
                 opacity: status === 'loading' ? 0.3 : 1,
                 pointerEvents: status === 'loading' ? 'none' : 'auto',
-                color: status === 'error' ? 'red' : 'auto'
+                color: status === 'error' ? 'red' : 'auto',
+                fontFamily: 'Arial'
             }}
         >
             Tsila:&ensp;<input
