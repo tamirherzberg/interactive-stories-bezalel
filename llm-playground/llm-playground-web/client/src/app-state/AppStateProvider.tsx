@@ -11,6 +11,7 @@ type AppState = {
     messages: Message[];
     status: 'idle' | 'loading' | 'error';
     inputMessage: '';
+    curStrangerIdx: 0;
 }
 
 const initAppState: AppState = {
@@ -21,6 +22,7 @@ const initAppState: AppState = {
     ],
     status: 'idle',
     inputMessage: '',
+    curStrangerIdx: 0,
 }
 
 const AppStateContext = createContext(initAppState);
