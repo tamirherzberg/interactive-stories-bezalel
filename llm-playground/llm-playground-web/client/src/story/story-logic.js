@@ -40,7 +40,7 @@ export function useHandleStoryResponse() {
                 newMessages.push({
                     role: 'assistant', content: endingLine
                 });
-                setAppState({messages: [...newMessages]});
+                setAppState({messages: [...newMessages], curStrangerIdx:strangerIdx});
             });
             idleTimer.current.start();
             setAppState({messages: [...newMessages], curStrangerIdx:strangerIdx});
