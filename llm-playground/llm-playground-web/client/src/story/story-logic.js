@@ -13,7 +13,7 @@ export function useHandleStoryResponse() {
     let strangerIdx = curStrangerIdx;
 
     function handleStoryResponse(messages, response) {
-        console.log(response)
+        // console.log(response)
         if (!response) return;
 
         const newMessages = [...messages];
@@ -31,7 +31,6 @@ export function useHandleStoryResponse() {
             setAppState({messages: [...newMessages], curStrangerIdx:strangerIdx});
 
             idleTimer.current = new Timer(5000, () => {
-                console.log("times up!")
                 strangerIdx++;
                 newMessages.push({
                     role: 'assistant', content: "\n'Come in!' a familiar voice called from the room." +
