@@ -35,7 +35,7 @@ export function useHandleStoryResponse() {
                 newMessages.push({
                     role: 'assistant', content: "\n'Come in!' a familiar voice called from the room." +
                         "\nYou open the door, and your heart drops." +
-                        "\n'It was Bracha, grinning from behind the desk."
+                        "\nIt was Bracha, grinning from behind the desk."
                 });
                 newMessages.push({
                     role: 'assistant', content: endingLine
