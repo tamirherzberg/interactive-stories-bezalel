@@ -17,9 +17,6 @@ const STORY_CONFIG_1 = {
             
             // string, the current stranger's response to the player. Starts with '{name}:' where 'name' is the name of the current strange, and is written in first person based on the current stranger's age and character.
             "strangerResponse": "",
-            
-            // string, call-to-action or a hint for the player on how to try to convince the stranger based on their conversation only. Use a suggestive tone (e.g. start with "You can ..." or "You might ...").
-            "callToAction": "",
 
             // float between 0 and 1. It represents how close the current stranger is to let the player cut them in line. 0 means not at all, 1 means the stranger agreed to let the player pass.
             // If according to 'strangerResponse' the player can cut the current stranger in line, goalProgress equals 0.
