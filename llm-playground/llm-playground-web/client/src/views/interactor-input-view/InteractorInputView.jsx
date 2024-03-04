@@ -46,7 +46,7 @@ export default function InteractorInputView() {
     }, [messages, inputMessage]);
 
 
-    console.log(curStrangerIdx);
+    // console.log(curStrangerIdx);
     return (
         <div
             id="interactor-box"
