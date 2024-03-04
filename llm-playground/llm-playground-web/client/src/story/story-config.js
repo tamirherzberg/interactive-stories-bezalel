@@ -32,7 +32,6 @@ const STORY_CONFIG_1 = {
         You should limit the length of the output texts:
         "storyText" maximum length is 20 words.
         "strangerResponse" maximum length is 15 words.
-        "callToAction" maximum length is always 10 words.
 
         Base your output on the following backstory:
         
