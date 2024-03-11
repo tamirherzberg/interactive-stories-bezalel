@@ -7,11 +7,16 @@ import { useHandleStoryResponse } from "../../story/story-logic";
 export default function InteractorInputView() {
 
     const { messages, status, inputMessage} = useAppState();
-    let {curStrangerIdx} = useAppState();
+    let {curStrangerIdx, storyIdx, endOfIntro} = useAppState();
     const setAppState = useSetAppState();
 
 
     const handleResponse = useHandleStoryResponse();
+
+    const continueStory = useCallback(() => {
+        storyIdx++;
+        setAppState({storyIdx:storyIdx})
+    });
 
     const send = useCallback(() => {
 
@@ -56,19 +61,21 @@ export default function InteractorInputView() {
                 color: status === 'error' ? 'red' : 'auto',
                 fontFamily: 'Arial',
                 display: 'flex',
-                flexDirection: (curStrangerIdx == 3 || curStrangerIdx == 4) ? 'column' : 'unset',
+                justifyContent: 'center', // Center the content horizontally
+                flexDirection: (curStrangerIdx >= 3) ? 'column' : 'unset',
                 alignItems: 'center',
             }}
         >
+            <div><button onClick={continueStory} style={{display: (storyIdx < endOfIntro) ? 'inherit' : 'none', margin:'auto'}}>Breath</button></div>
             <img src="https://c.tenor.com/07cmziHz9hQAAAAC/tenor.gif" alt="FIN" style={{justifyContent: 'center', display: curStrangerIdx == 4 ? 'inherit':'none'}}/>
-            <div style={{display: (curStrangerIdx == 3 || curStrangerIdx == 4) ? 'none': 'inherit'}}>Tsila:&ensp;</div><input
+            <div style={{display: (storyIdx < endOfIntro || curStrangerIdx >= 3) ? 'none': 'inherit'}}>You:&ensp;</div><input
                 id="interactor-text-input"
                 value={inputMessage}
                 onKeyDown={e => { if (e.key === 'Enter') send() }}
                 onChange={e => setAppState({ inputMessage: e.target.value })}
-                style={{display: (curStrangerIdx == 3 || curStrangerIdx == 4) ? 'none': 'inherit'}}
+                style={{display: (storyIdx < endOfIntro || curStrangerIdx >= 3) ? 'none': 'inherit'}}
             />
-            <button onClick={send} style={{display: (curStrangerIdx == 3 || curStrangerIdx == 4) ? 'none': 'inherit'}}>Send</button>
+            <button onClick={send} style={{display: (storyIdx < endOfIntro || curStrangerIdx >= 3) ? 'none': 'inherit'}}>Send</button>
             {
                 status === 'error' && 'Something is broken 😵‍💫'
             }
