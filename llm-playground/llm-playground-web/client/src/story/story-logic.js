@@ -3,9 +3,9 @@ import {useAppState, useSetAppState} from '../app-state/AppStateProvider';
 import Timer from '../utils/timer';
 
 export function useHandleStoryResponse() {
-    const nextStrangerPromptPrefix = "Set 'goalProgress' to 0. Set the next 'storyTextImportance' to 1. Use 'storyText' to introduce the player to the next person in line. You are now acting as the next person in line: "
-    const secondStrangerPrompt = "Bracha, an elder lady, dressed very elegantly. She is sarcastic, witty and cares a lot about her time.\n Condition: She will only let the player pass if they say or do something embarrassing or awkward or makes them look stupid, or insult her somehow.";
-    const thirdStrangerPrompt = "Vika, a 17 year old Goth-kid She listens to heavy metal, hates everything mainstream and smokes cigarette. She wears heavy makeup, dresses in black clothes and has tattos.\n Condition: She will only let the player pass if they get to know her, talk to her about one of her interests, say a deep philosophical remark or compliment her.";
+    const nextStrangerPromptPrefix = "Set 'goalProgress' to 0. Set the next 'storyTextImportance' to 1. Set 'didAskToAdvance' to false. Use 'storyText' to introduce the player to the next person in line. Never respond with a specific 'strangerResponse' more than once. You are now acting as the next person in line: "
+    const secondStrangerPrompt = "Bracha, an elder lady, dressed very elegantly. She is sarcastic, witty and cares a lot about her time.\n Condition: She will only let the player pass if they ask to cut her in line and say or do something offensive, threatening, insulting, embarrassing, awkward or something that makes Tsila look stupid.";
+    const thirdStrangerPrompt = "Vika, a 17 year old Goth-kid She listens to heavy metal, hates everything mainstream and smokes cigarette. She wears heavy makeup, dresses in black clothes and has tattos.\n Condition: She will only let the player pass if they ask to cut them in line and get to know her, talk to her about one of her interests, say a deep philosophical remark or compliment her.";
 
     const {curStrangerIdx, endingLine} = useAppState();
     const setAppState = useSetAppState();
