@@ -14,7 +14,7 @@ type AppState = {
     curStrangerIdx: 0;
     storyIdx: 0,
     endingLine:'',
-    endOfIntro: 7;
+    endOfIntro: 8;
 }
 
 const initAppState: AppState = {
@@ -28,7 +28,7 @@ const initAppState: AppState = {
     curStrangerIdx: 0,
     storyIdx: 0,
     endingLine:'',
-    endOfIntro: 7,
+    endOfIntro: 8,
 }
 
 const AppStateContext = createContext(initAppState);

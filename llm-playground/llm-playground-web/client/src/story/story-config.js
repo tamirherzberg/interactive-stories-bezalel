@@ -38,18 +38,20 @@ const STORY_CONFIG_1 = {
             
             // string, only populated when goalProgress equals 1. Always wrapped in apostrophes.
             // The story's ending line that Bracha says when Sarah comes into her office and realizes Bracha is her new boss.
-            // Should be a sarcastic comment making fun of the offensive / threatening / insulting / embarrassing / awkward thing Sarah said or did to Bracha in line. Make sure it's absolutely clear what this joke refers to - if needed, mention it directly.
-            // For example, if the thing Sarah said that convinced Bracha is that she said she is almost peeing, a possible line could be: 'Welcome to work dear, hope you don't pee on yourself here too!'
+            // Should be a funny comment that shows Bracha's surprise that they met in line, and making fun of the joke or compliment Sarah said or did to Bracha in line. Make sure it's absolutely clear what this joke refers to - if needed, mention it directly.
+            // For example, if Sarah made Bracha laugh by telling a joke about chickens, a possible line could be: 'Can't believe it, you're the comedian from the line! Hope you don't scare the clients with chicken jokes!'
             "endingLine": "",
         }
 
         You should limit the length of the output texts:
-        "storyText" maximum length is 20 words.
+        "storyText" maximum length is 10 words.
+        "innerCritic" maximum length is 10 words.
         "strangerResponse" maximum length is 15 words.
 
         Base your output on the following backstory:
         
-        "The player is acting as Sarah, a 29 year old female with social anxiety. Today is her first day at her dream job, but she got lost in her way there. The pressure and stress about being late triggered an anxiety attack.
+        "The player is acting as Sarah, a 29 year old female with social anxiety. Last week she had an interview to her dream job, but she got lost in her way there and was late for the meeting.
+        The pressure and stress about being late to that interview cause Sarah to have anxiety attacks. 
         She has light skin, brown eyes and brown hair. She tried hard to dress nicely, but it looks unnatural and sloppy. She looks stressed and in a hurry.
         The story takes place in the line to the women restrooms in Dizengoff Center mall."
         

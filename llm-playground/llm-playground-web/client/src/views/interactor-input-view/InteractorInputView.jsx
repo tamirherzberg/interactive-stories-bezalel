@@ -52,6 +52,7 @@ export default function InteractorInputView() {
 
 
     // console.log(curStrangerIdx);
+    let startOfEnding = endOfIntro + 1;
     return (
         <div
             id="interactor-box"
@@ -66,7 +67,7 @@ export default function InteractorInputView() {
                 alignItems: 'center',
             }}
         >
-            <div><button onClick={continueStory} style={{display: (storyIdx < endOfIntro) ? 'inherit' : 'none', margin:'auto'}}>Breath</button></div>
+            <div><button onClick={continueStory} style={{display: (storyIdx < endOfIntro || storyIdx >= startOfEnding) ? 'inherit' : 'none', margin:'auto'}}>Breath</button></div>
             <img src="https://c.tenor.com/07cmziHz9hQAAAAC/tenor.gif" alt="FIN" style={{justifyContent: 'center', display: curStrangerIdx == 4 ? 'inherit':'none'}}/>
             <div style={{display: (storyIdx < endOfIntro || curStrangerIdx >= 3) ? 'none': 'inherit'}}>You:&ensp;</div><input
                 id="interactor-text-input"

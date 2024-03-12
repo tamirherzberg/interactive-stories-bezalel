@@ -4,10 +4,10 @@ import Timer from '../utils/timer';
 
 export function useHandleStoryResponse() {
     const nextStrangerPromptPrefix = "Set 'goalProgress' to 0. Set the next 'storyTextImportance' to 1. Set 'didAskToAdvance' to false. Use 'storyText' to introduce the player to the next person in line. Never respond with a specific 'strangerResponse' more than once. You are now acting as the next person in line: "
-    const secondStrangerPrompt = "Bracha, an elder lady, dressed very elegantly. She is sarcastic, witty and cares a lot about her time.\n Condition: She will only let the player pass if they ask to cut her in line and say or do something offensive, threatening, insulting, embarrassing, awkward or something that makes Sarah look stupid.";
-    const thirdStrangerPrompt = "Vika, a 17 year old Goth-kid She listens to heavy metal, hates everything mainstream and smokes cigarette. She wears heavy makeup, dresses in black clothes and has tattos.\n Condition: She will only let the player pass if they ask to cut them in line and get to know her, talk to her about one of her interests, say a deep philosophical remark or compliment her.";
+    const secondStrangerPrompt = "Bracha, an elder lady, dressed very elegantly. She is sarcastic, witty and cares a lot about her time.\n Condition: She will only let the player pass if they ask to cut her in line and compliment her or say something funny.";
+    const thirdStrangerPrompt = "Vika, a 17 year old Goth-kid She listens to heavy metal, hates everything mainstream and smokes cigarette. She wears heavy makeup, dresses in black clothes and has tattos.\n Condition: She will only let the player pass if they ask to cut them in line and show they're not mainstream or engage in deep philosophical conversation about life.";
 
-    const {curStrangerIdx, endingLine} = useAppState();
+    const {curStrangerIdx, endingLine, storyIdx} = useAppState();
     const setAppState = useSetAppState();
     const idleTimer = useRef();
     let strangerIdx = curStrangerIdx;
@@ -23,27 +23,7 @@ export function useHandleStoryResponse() {
         }
 
         function gameWon() {
-            newMessages.push({
-                role: 'assistant',
-                content: "You made it! You charge your phone, navigate to the office and run as fast as you can." +
-                    "\nTaking a deep breath, you knock on your new boss's office door."
-            });
-            setAppState({messages: [...newMessages], curStrangerIdx:strangerIdx});
-
-            idleTimer.current = new Timer(5000, () => {
-                strangerIdx++;
-                newMessages.push({
-                    role: 'assistant', content: "\n'Come in!' a familiar voice called from the room." +
-                        "\nYou open the door, and your heart drops." +
-                        "\nIt was Bracha, grinning from behind the desk."
-                });
-                newMessages.push({
-                    role: 'assistant', content: endingLine
-                });
-                setAppState({messages: [...newMessages], curStrangerIdx:strangerIdx});
-            });
-            idleTimer.current.start();
-            setAppState({messages: [...newMessages], curStrangerIdx:strangerIdx});
+            setAppState({storyIdx:storyIdx+1});
         }
 
         if (response.storyText && response.storyTextImportance > 0.75) {
