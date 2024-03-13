@@ -69,14 +69,14 @@ export default function InteractorInputView() {
         >
             <div><button onClick={continueStory} style={{display: (storyIdx < endOfIntro || storyIdx >= startOfEnding) ? 'inherit' : 'none', margin:'auto'}}>Breath</button></div>
             <img src="https://c.tenor.com/07cmziHz9hQAAAAC/tenor.gif" alt="FIN" style={{justifyContent: 'center', display: curStrangerIdx == 4 ? 'inherit':'none'}}/>
-            <div style={{display: (storyIdx < endOfIntro || curStrangerIdx >= 3) ? 'none': 'inherit'}}>You:&ensp;</div><input
+            <div style={{display: (storyIdx < endOfIntro || curStrangerIdx >= 3) ? 'none': 'inherit', fontSize: 18}}>What do you want to say?&ensp;</div><input
                 id="interactor-text-input"
                 value={inputMessage}
                 onKeyDown={e => { if (e.key === 'Enter') send() }}
                 onChange={e => setAppState({ inputMessage: e.target.value })}
                 style={{display: (storyIdx < endOfIntro || curStrangerIdx >= 3) ? 'none': 'inherit'}}
             />
-            <button onClick={send} style={{display: (storyIdx < endOfIntro || curStrangerIdx >= 3) ? 'none': 'inherit'}}>Send</button>
+            <button onClick={send} style={{display: (storyIdx < endOfIntro || curStrangerIdx >= 3) ? 'none': 'inherit', marginInline: '5px', fontSize: 20}}>Send</button>
             {
                 status === 'error' && 'Something is broken 😵‍💫'
             }

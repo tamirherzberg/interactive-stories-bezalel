@@ -27,6 +27,9 @@ export default function StoryBodyView() {
                 {messages.map((msg, i) => {
                     if (msg.role === 'system') return null;
                     let messageClassName = `message-${msg.role}`;
+                    if (msg.role === 'user' && !msg.content.startsWith("You: ")) {
+                        return null;
+                    }
                     if (msg.role === 'assistant') {
                         if (msg.content.startsWith("Rona:")) {
                             messageClassName += "-rona";
@@ -45,7 +48,7 @@ export default function StoryBodyView() {
                             key={'msg' + i}
                             className={messageClassName}
                             style={{display:(storyIdx < endOfIntro) ? 'none' : 'inherit'}}
-                            dangerouslySetInnerHTML={{ __html: (msg.role === 'user' ? 'You: ' : '') + msg.content }}
+                            dangerouslySetInnerHTML={{ __html: msg.content }}
                         />
                     )
                 })}

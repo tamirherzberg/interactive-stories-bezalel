@@ -7,16 +7,22 @@ export function useHandleStoryResponse() {
     const secondStrangerPrompt = "Bracha, an elder lady, dressed very elegantly. She is sarcastic, witty and cares a lot about her time.\n Condition: She will only let the player pass if they ask to cut her in line and compliment her or say something funny.";
     const thirdStrangerPrompt = "Vika, a 17 year old Goth-kid She listens to heavy metal, hates everything mainstream and smokes cigarette. She wears heavy makeup, dresses in black clothes and has tattos.\n Condition: She will only let the player pass if they ask to cut them in line and show they're not mainstream or engage in deep philosophical conversation about life.";
 
-    const {curStrangerIdx, endingLine, storyIdx} = useAppState();
+    const {curStrangerIdx, endingLine, storyIdx, messages} = useAppState();
     const setAppState = useSetAppState();
     const idleTimer = useRef();
     let strangerIdx = curStrangerIdx;
 
     function handleStoryResponse(messages, response) {
         console.log(response)
+
         if (!response) return;
 
+        messages.pop();
+        setAppState({messages: messages});
+
         const newMessages = [...messages];
+
+        newMessages.push({role: 'user', content: "You: " + response.socialAnxietyModifiedInput});
 
         if (strangerIdx === 1 && response.endingLine !== "") {
             setAppState({endingLine: response.endingLine});
