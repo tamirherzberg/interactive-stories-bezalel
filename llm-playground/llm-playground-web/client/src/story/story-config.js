@@ -12,25 +12,22 @@ const STORY_CONFIG_1 = {
         Provide your output in JSON format of this scheme:
         {          
             // string, a modified version of the player input reflecting the impact of their social anxiety.
-            // Consider the individual's tendencies to overthink, fear of judgment, and difficulty initiating conversation. Craft the revised text to reflect a more cautious, hesitant, or abbreviated expression of their thoughts or intentions, keeping in mind the fear of rejection, stress, blackouts and other manifestations of anxiety during face-to-face interactions.
+            // Consider the individual's tendencies to overthink, fear of judgment, and difficulty initiating conversation.
+            // Craft the revised text to reflect a more cautious, hesitant, or abbreviated expression of their thoughts or intentions, keeping in mind the fear of rejection, stress, blackouts and other manifestations of anxiety during face-to-face interactions.
             // Has to be roughly the same number of words as the player's input.
             "socialAnxietyModifiedInput": "",
-            
-            // string, a first person visual description of the stranger from the player's eyes. Contains information about the stranger's appearance, mood, etc. A certain 'storyText' can only be presented to the player once. 
-            "storyText": "",
-            
-            // float between 0 and 1. It represents how important the storyText is based on the amount of new information it provides. 
-            "storyTextImportance": 0,
             
             // string, the current stranger's response to the 'socialAnxietyModifiedInput' said to them by the player. Starts with '{name}:' where 'name' is the name of the current strange, and is written in first person based on the current stranger's age and character. A certain 'strangerResponse' can only be said to the player once.
             "strangerResponse": "",
               
-            // string, describes in everyday language Sarah's internal commentary on her current situation based on the 'strangerResponse' and the difference between the player's input to 'socialAnxietyModifiedInput' (what he actually managed to say). Should capture a tendency towards negative thoughts, self-doubt, self criticism and excessive analysis.
-            The inner voice strives to prevent social rejection, even when social interactions unfold positively. Emphasize that the inner critic firmly believes that disclosing anxiety to others is always the worst thing to do.
+            // string, describes in everyday language Sarah's internal commentary on her current situation based on the 'strangerResponse' and the difference between the player's input to 'socialAnxietyModifiedInput' (what he actually managed to say).
+            // It should introduce information about the stranger's appearance, mood, etc.
+            // Should capture a tendency towards negative thoughts, self-doubt, self criticism and excessive analysis.
+            // The inner voice strives to prevent social rejection, even when social interactions unfold positively.
             // Examples for values: “You shouldn’t have said that. That was so stupid,” “I bet she just laughed at your joke to be nice”.
             "innerCritic": "",
             
-            //  float between 0 and 1. It represents how important the 'innerCritic' text based on the amount of new information it incorporates from the backstory or its capacity to depict the situation from the perspective of someone grappling with social anxiety.
+            //  float between 0 and 1. It represents how important the 'innerCritic' text based on the amount of new information it provides on the stranger and its capacity to depict the situation from the perspective of someone grappling with social anxiety in a new way.
             "innerCriticImportance": 0,
             
             // boolean, represents whether the player asked directly if he can cut the current stranger in line or not.
@@ -48,14 +45,13 @@ const STORY_CONFIG_1 = {
         }
 
         You should limit the length of the output texts:
-        "storyText" maximum length is 10 words.
-        "innerCritic" maximum length is 10 words.
+        "innerCritic" maximum length is 15 words.
         "strangerResponse" maximum length is 15 words.
 
         Base your output on the following backstory:
         
-        "The player is acting as Sarah, a 29 year old female with social anxiety. Last week she had an interview to her dream job, but she got lost in her way there and was late for the meeting.
-        The pressure and stress about being late to that interview cause Sarah to have anxiety attacks. 
+        "The player is acting as Sarah, a 29 year old female with social anxiety. She has an interview to her dream job today, but she got lost in her way there and was late for the meeting.
+        The pressure and stress about being late cause Sarah to have an anxiety attack. 
         She has light skin, brown eyes and brown hair. She tried hard to dress nicely, but it looks unnatural and sloppy. She looks stressed and in a hurry.
         The story takes place in the line to the women restrooms in Dizengoff Center mall."
         

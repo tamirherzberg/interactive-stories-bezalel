@@ -32,13 +32,10 @@ export function useHandleStoryResponse() {
             setAppState({storyIdx:storyIdx+1});
         }
 
-        if (response.storyText && response.storyTextImportance > 0.75) {
-            newMessages.push({role: 'assistant', content: response.storyText});
-        }
         if (response.strangerResponse) {
             newMessages.push({role: 'assistant', content: response.strangerResponse});
         }
-        if (response.innerCritic && response.innerCriticImportance > 0.6) {
+        if (response.innerCritic && response.innerCriticImportance > 0.7) {
             newMessages.push({role: 'assistant', content: response.innerCritic});
         }
 
