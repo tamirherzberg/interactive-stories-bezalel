@@ -50,9 +50,12 @@ export default function InteractorInputView() {
 
     }, [messages, inputMessage]);
 
-
-    // console.log(curStrangerIdx);
     let startOfEnding = endOfIntro + 1;
+
+    function DidPassAllStrangers() {
+        return curStrangerIdx >= 2;
+    }
+
     return (
         <div
             id="interactor-box"
@@ -63,20 +66,19 @@ export default function InteractorInputView() {
                 fontFamily: 'Arial',
                 display: 'flex',
                 justifyContent: 'center', // Center the content horizontally
-                flexDirection: (curStrangerIdx >= 3) ? 'column' : 'unset',
+                flexDirection: DidPassAllStrangers() ? 'column' : 'unset',
                 alignItems: 'center',
             }}
         >
             <div><button onClick={continueStory} style={{display: (storyIdx < endOfIntro || storyIdx >= startOfEnding) ? 'inherit' : 'none', margin:'auto'}}>Breath</button></div>
-            <img src="https://c.tenor.com/07cmziHz9hQAAAAC/tenor.gif" alt="FIN" style={{justifyContent: 'center', display: curStrangerIdx == 4 ? 'inherit':'none'}}/>
-            <div style={{display: (storyIdx < endOfIntro || curStrangerIdx >= 3) ? 'none': 'inherit', fontSize: 18}}>What do you want to say?&ensp;</div><input
+            <div style={{display: (storyIdx < endOfIntro || DidPassAllStrangers()) ? 'none': 'inherit', fontSize: 18}}>What do you want to say?&ensp;</div><input
                 id="interactor-text-input"
                 value={inputMessage}
                 onKeyDown={e => { if (e.key === 'Enter') send() }}
                 onChange={e => setAppState({ inputMessage: e.target.value })}
-                style={{display: (storyIdx < endOfIntro || curStrangerIdx >= 3) ? 'none': 'inherit'}}
+                style={{display: (storyIdx < endOfIntro || DidPassAllStrangers()) ? 'none': 'inherit'}}
             />
-            <button onClick={send} style={{display: (storyIdx < endOfIntro || curStrangerIdx >= 3) ? 'none': 'inherit', marginInline: '5px', fontSize: 20}}>Send</button>
+            <button onClick={send} style={{display: (storyIdx < endOfIntro || DidPassAllStrangers()) ? 'none': 'inherit', marginInline: '5px', fontSize: 20}}>Send</button>
             {
                 status === 'error' && 'Something is broken 😵‍💫'
             }

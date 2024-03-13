@@ -37,9 +37,6 @@ export default function StoryBodyView() {
                         else if (msg.content.startsWith("Vika:")) {
                             messageClassName += "-vika";
                         }
-                        else if (msg.content.startsWith("Bracha:")) {
-                            messageClassName += "-bracha";
-                        }
                         else {
                             messageClassName += "-storyText";
                         }
