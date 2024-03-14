@@ -23,7 +23,7 @@ export function useHandleStoryResponse() {
 
         newMessages.push({role: 'user', content: "You: " + response.socialAnxietyModifiedInput});
 
-        if (strangerIdx === 1 && response.endingLine !== "") {
+        if (strangerIdx === 2 && response.endingLine !== "") {
             setAppState({endingLine: response.endingLine});
         }
 
@@ -34,11 +34,15 @@ export function useHandleStoryResponse() {
         if (response.strangerResponse) {
             newMessages.push({role: 'assistant', content: response.strangerResponse});
         }
-        if (response.innerCritic && response.innerCriticImportance > 0.7) {
+        if (response.innerCritic && response.innerCriticImportance >= 0.75 && !didReachGoal()) {
             newMessages.push({role: 'assistant', content: response.innerCritic});
         }
 
-        if (response.goalProgress === 1 || response.goalProgress === '1') {
+        function didReachGoal() {
+            return response.goalProgress === 1 || response.goalProgress === '1';
+        }
+
+        if (didReachGoal()) {
             strangerIdx++;
             switch (strangerIdx) {
                 case 0:
@@ -51,7 +55,6 @@ export function useHandleStoryResponse() {
                 case 2:
                     newMessages.push({role: 'assistant', content: "Can't believe it - she let me pass her in line too!"});
                     gameWon();
-                    return;
             }
         }
 

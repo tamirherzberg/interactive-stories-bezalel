@@ -17,13 +17,13 @@ export default function StoryBodyView() {
     return (
         <main ref={mainBodyContRef} id="main-body-cont">
             <div id="text-column-cont">
-                <p className={"message-assistant-storyText"} style={{display:(storyIdx >= 1) ? 'inherit' : 'none', color:'black'}}>You open your eyes, and the world around you comes into focus.</p>
-                <p className={"message-assistant-storyText"} style={{display:(storyIdx >= 2) ? 'inherit' : 'none', color:'black'}}>Uh-oh, you're stuck in an endless line for the women's restrooms at Dizengoff Center mall.</p>
+                <p className={"message-assistant-storyText"} style={{display:(storyIdx >= 1) ? 'inherit' : 'none', color:'black'}}>You open your eyes. The world around you slowly comes into focus, like an old photo developing in a darkroom</p>
+                <p className={"message-assistant-storyText"} style={{display:(storyIdx >= 2) ? 'inherit' : 'none', color:'black'}}>Uh-oh, you're stuck in the line for the women's restrooms at Dizengoff Center mall.</p>
                 <p className={"message-assistant-storyText"} style={{display:(storyIdx >= 3) ? 'inherit' : 'none', color:'black'}}>Why are you sweating so much?</p>
-                <p className={"message-assistant-storyText"} style={{display:(storyIdx >= 4) ? 'inherit' : 'none', color:'black'}}>Oh, right. Another anxiety attack.</p>
-                <p className={"message-assistant-storyText"} style={{display:(storyIdx >= 5) ? 'inherit' : 'none', color:'black'}}>Then it hits you - it's the first day at your new job and you got lost on the way there.</p>
+                <p className={"message-assistant-storyText"} style={{display:(storyIdx >= 4) ? 'inherit' : 'none', color:'black'}}>Oh, right. You just had an anxiety attack.</p>
+                <p className={"message-assistant-storyText"} style={{display:(storyIdx >= 5) ? 'inherit' : 'none', color:'black'}}>Then it hits you - you are late to a job interview in the top accounting firm in the world.</p>
                 <p className={"message-assistant-storyText"} style={{display:(storyIdx >= 6) ? 'inherit' : 'none', color:'black'}}>All you need is a moment of privacy. And to wash your face.</p>
-                <p className={"message-assistant-storyText"} style={{display:(storyIdx >= 7) ? 'inherit' : 'none', color:'black'}}>The line moves too slowly - you're gonna be very late! You must get in now!</p>
+                <p className={"message-assistant-storyText"} style={{display:(storyIdx >= 7) ? 'inherit' : 'none', color:'black'}}>The line moves too slowly - you're gonna be so late! You must get in now!</p>
                 {messages.map((msg, i) => {
                     if (msg.role === 'system') return null;
                     let messageClassName = `message-${msg.role}`;
@@ -50,11 +50,13 @@ export default function StoryBodyView() {
                     )
                 })}
                 {/* TODO: ADD POSITIVE INNER VOICE*/}
-                <p className={"message-assistant-storyText"} style={{display:(storyIdx >= endOfIntro + 1) ? 'inherit' : 'none', color:'black'}}>You made it! You charge your phone, navigate to the office and run as fast as you can. Taking a deep breath, you knock on your new boss's office door.</p>
-                <p className={"message-assistant-storyText"} style={{display:(storyIdx >= endOfIntro + 2) ? 'inherit' : 'none', color:'black'}}>'Come in!' a familiar voice called from the room.</p>
-                {/* TODO: CHANGE BREATH TO KNOCK*/}
-                <p className={"message-assistant-storyText"} style={{display:(storyIdx >= endOfIntro + 3) ? 'inherit' : 'none', color:'black'}}>You can't believe your eyes. It's Bracha, grinning from behind the desk.</p>
-                <p className={"message-assistant-storyText"} style={{display:(storyIdx >= endOfIntro + 3) ? 'inherit' : 'none', color:'black'}}>Bracha: {endingLine}</p> {/* todo: use her style?*/}
+                <p className={"message-assistant-storyText"} style={{display:(storyIdx >= endOfIntro + 2) ? 'inherit' : 'none', color:'black'}}>You splash water on your face, trying to calm down.</p>
+                <p className={"message-assistant-storyText"} style={{display:(storyIdx >= endOfIntro + 3) ? 'inherit' : 'none', color:'black'}}>As you look into the mirror, something shifts within you.</p>
+                <p className={"message-assistant-storyText"} style={{display:(storyIdx >= endOfIntro + 4) ? 'inherit' : 'none', color:'black'}}>{endingLine}</p>
+                <p className={"message-assistant-storyText"} style={{display:(storyIdx >= endOfIntro + 5) ? 'inherit' : 'none', color:'black'}}>The only one who's really judging you is yourself.</p>
+                <p className={"message-assistant-storyText"} style={{display:(storyIdx >= endOfIntro + 6) ? 'inherit' : 'none', color:'black'}}>Suddenly, the pressure to work for a prestigious corporate to prove your worth seems so pointless.</p>
+                <p className={"message-assistant-storyText"} style={{display:(storyIdx >= endOfIntro + 7) ? 'inherit' : 'none', color:'black'}}>You decide to skip the interview and instead chase your true passion - photography.</p>
+                <p className={"message-assistant-storyText"} style={{display:(storyIdx >= endOfIntro + 8) ? 'inherit' : 'none', color:'black'}}>This isn't the end – it's the first frame of a whole new picture.</p>
                 {
                     status === 'loading' && <LoadingDots />
                 }

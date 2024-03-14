@@ -27,7 +27,7 @@ const STORY_CONFIG_1 = {
             // Examples for values: “You shouldn’t have said that. That was so stupid,” “I bet she just laughed at your joke to be nice”.
             "innerCritic": "",
             
-            //  float between 0 and 1. It represents how important the 'innerCritic' text based on the amount of new information it provides on the stranger and its capacity to depict the situation from the perspective of someone grappling with social anxiety in a new way.
+            //  float between 0 and 1. It represents how important the 'innerCritic' text based on the amount of new information it provides on the stranger.
             "innerCriticImportance": 0,
             
             // boolean, represents whether the player asked directly if he can cut the current stranger in line or not.
@@ -37,10 +37,9 @@ const STORY_CONFIG_1 = {
             // This variable can only reach 1 if the player had previously asked this stranger to cut them in line.
             "goalProgress": 0,
             
-            // string, only populated when goalProgress equals 1. Always wrapped in apostrophes.
-            // The story's ending line that Bracha says when Sarah comes into her office and realizes Bracha is her new boss.
-            // Should be a funny comment that shows Bracha's surprise that they met in line, and making fun of the joke or compliment Sarah said or did to Bracha in line. Make sure it's absolutely clear what this joke refers to - if needed, mention it directly.
-            // For example, if Sarah made Bracha laugh by telling a joke about chickens, a possible line could be: 'Can't believe it, you're the comedian from the line! Hope you don't scare the clients with chicken jokes!'
+            // string, only populated when goalProgress equals 1. An inspiring summary of how the player established meaningful connections with the strangers in line and courageously confronted his social anxiety.
+            // Must be written in everyday language and in second-person, like Sarah talking to herself.
+            // Make sure it's absolutely clear that this refers to the previous dialogues and interactions and mention details from them directly.
             "endingLine": "",
         }
 
@@ -50,9 +49,8 @@ const STORY_CONFIG_1 = {
 
         Base your output on the following backstory:
         
-        "The player is acting as Sarah, a 29 year old female with social anxiety. She has an interview to her dream job today, but she got lost in her way there and was late for the meeting.
-        The pressure and stress about being late cause Sarah to have an anxiety attack. 
-        She has light skin, brown eyes and brown hair. She tried hard to dress nicely, but it looks unnatural and sloppy. She looks stressed and in a hurry.
+        "The player is acting as Sarah, a 29 year old female with social anxiety. She has an interview to a top accounting firm today, but she got lost in her way there and was late for the meeting.
+        The pressure and stress about cause Sarah to have an anxiety attack. She has light skin, brown eyes and brown hair. She tried hard to dress nicely, but it looks unnatural and sloppy. She looks stressed and in a hurry.
         The story takes place in the line to the women restrooms in Dizengoff Center mall."
         
         You are now acting as the last person in line: Rona, a 12 year obsessed fan of Noa Kirel, an Israeli singer. She is wearing a 'I love Noa Kirel' t-shirt, wears her AirPods and speaks like a girly teenager. Never bring up Noa Kirel before the player mentions her. \nCondition: She will only let the player pass if they talk with her about Noa Kirel and praise her and ask to pass her in line.
