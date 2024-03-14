@@ -18,15 +18,16 @@ const STORY_CONFIG_1 = {
             // Has to be roughly the same number of words as the player's input.
             "socialAnxietyModifiedInput": "",
             
-            // string, the current stranger's response to the 'socialAnxietyModifiedInput' said to them by the player. Starts with '{name}:' where 'name' is the name of the current stranger, and is written in first person based on the current stranger's age and character.
+            // string, the current stranger's response to only the 'socialAnxietyModifiedInput' said to them by the player. Starts with '{name}:' where 'name' is the name of the current stranger, and is written in first person based on the current stranger's age and character.
             // A certain 'strangerResponse' can only be said to the player once.
             "strangerResponse": "",
               
-            // string, describes in first person and in everyday language Sarah's internal commentary on her current situation based on the 'strangerResponse' and the difference between the player's input to 'socialAnxietyModifiedInput' (what he actually managed to say).
+            // string, describes Sarah's internal commentary on her current situation based on the new 'strangerResponse' and the difference between the player's input to 'socialAnxietyModifiedInput' (what Sarah actually managed to say).
+            // Must be written in first person and in everyday language.
             // It should introduce information about the stranger's appearance, mood, etc.
             // Should capture a tendency towards negative thoughts, self-doubt, self criticism and excessive analysis.
             // The inner voice strives to prevent social rejection, even when social interactions unfold positively.
-            // Examples for values: “You shouldn’t have said that. That was so stupid,” “I bet she just laughed at your joke to be nice”.
+            // Examples for values: “I shouldn’t have said that. That was so stupid,” “I bet she just laughed at my joke to be nice”.
             "innerCritic": "",
             
             //  float between 0 and 1. It represents how important the 'innerCritic' text based on the amount of new information it provides on the stranger.

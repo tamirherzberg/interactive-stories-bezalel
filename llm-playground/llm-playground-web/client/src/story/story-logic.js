@@ -34,7 +34,7 @@ export function useHandleStoryResponse() {
             if (response.strangerResponse) {
                 newMessages.push({role: 'assistant', content: response.strangerResponse});
             }
-            if (response.innerCritic && response.innerCriticImportance >= 0.75 && !didReachGoal()) {
+            if (response.innerCritic && response.innerCriticImportance >= 0.7 && !didReachGoal()) {
                 newMessages.push({role: 'assistant', content: response.innerCritic});
             }
             finishedTimer = true;
