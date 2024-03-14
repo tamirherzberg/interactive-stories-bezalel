@@ -29,4 +29,6 @@ button {
     flex-direction: column;
     align-items: center;
     font-family: Helvetica;
+    margin-top:15px;
+    font-size:24.5px;
 }

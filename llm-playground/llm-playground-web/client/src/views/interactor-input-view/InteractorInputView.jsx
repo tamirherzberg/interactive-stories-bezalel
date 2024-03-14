@@ -71,7 +71,7 @@ export default function InteractorInputView() {
             case endOfIntro + 8:
                 return "Take a deep breath"
             default:
-                return "Breath"
+                return "Breathe"
         }
     }
 
@@ -89,7 +89,7 @@ export default function InteractorInputView() {
                 alignItems: 'center',
             }}
         >
-            <div><button onClick={continueStory} style={{display: ((storyIdx < endOfIntro || storyIdx >= startOfEnding) && storyIdx < endOfIntro + 9) ? 'inherit' : 'none', margin:'auto', fontFamily:'Helvetica'}}>{GetActionButtonText()}</button></div>
+            <div><button onClick={continueStory} style={{padding: '15px 30px', display: ((storyIdx < endOfIntro || storyIdx >= startOfEnding) && storyIdx < endOfIntro + 9) ? 'inherit' : 'none', margin:'auto', fontFamily:'Helvetica'}}><b>{GetActionButtonText()}</b></button></div>
             <div style={{display: (storyIdx < endOfIntro || DidPassAllStrangers()) ? 'none': 'inherit', fontSize: 23, fontFamily:'Helvetica'}}>What do you &nbsp;<strong>want</strong>&nbsp; to say?&ensp;</div><input
                 id="interactor-text-input"
                 value={inputMessage}
