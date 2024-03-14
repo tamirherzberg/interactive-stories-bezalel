@@ -1,5 +1,5 @@
 const STORY_CONFIG_1 = {
-    name: 'The Line',
+    name: 'Out of Line',
     instructions: `
         You are running an interactive persuasion game. The goal of the player is to convince three strangers to cut in front of them in line to the public restrooms.
         However, the player experiences this from the perspective of Sarah, a woman with social anxiety.

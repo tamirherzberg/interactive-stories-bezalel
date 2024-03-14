@@ -17,7 +17,7 @@ export default function StoryBodyView() {
     return (
         <main ref={mainBodyContRef} id="main-body-cont">
             <div id="text-column-cont">
-                <p className={"message-assistant-storyText"} style={{display:(storyIdx >= 1) ? 'inherit' : 'none', color:'black'}}>You open your eyes. The world around you slowly comes into focus, like an old photo developing in a darkroom</p>
+                <p className={"message-assistant-storyText"} style={{display:(storyIdx >= 1) ? 'inherit' : 'none', color:'black'}}>You open your eyes. The world around you slowly comes into focus.</p>
                 <p className={"message-assistant-storyText"} style={{display:(storyIdx >= 2) ? 'inherit' : 'none', color:'black'}}>Uh-oh, you're stuck in the line for the women's restrooms at Dizengoff Center mall.</p>
                 <p className={"message-assistant-storyText"} style={{display:(storyIdx >= 3) ? 'inherit' : 'none', color:'black'}}>Why are you sweating so much?</p>
                 <p className={"message-assistant-storyText"} style={{display:(storyIdx >= 4) ? 'inherit' : 'none', color:'black'}}>Oh, right. You just had an anxiety attack.</p>
@@ -55,7 +55,7 @@ export default function StoryBodyView() {
                 <p className={"message-assistant-storyText"} style={{display:(storyIdx >= endOfIntro + 5) ? 'inherit' : 'none'}}>The only one who's judging me is myself.</p>
                 <p className={"message-assistant-storyText"} style={{display:(storyIdx >= endOfIntro + 6) ? 'inherit' : 'none'}}>Suddenly, the pressure to work for a prestigious corporate to prove my worth seems so pointless.</p>
                 <p className={"message-assistant-storyText"} style={{display:(storyIdx >= endOfIntro + 7) ? 'inherit' : 'none'}}>Sometimes I must insist on what's important to me and the world will adjust accordingly.</p>
-                <p className={"message-assistant-storyText"} style={{display:(storyIdx >= endOfIntro + 8) ? 'inherit' : 'none', color:'black'}}>You decide to skip the interview and chase your true passion - photography.</p>
+                <p className={"message-assistant-storyText"} style={{display:(storyIdx >= endOfIntro + 8) ? 'inherit' : 'none', color:'black'}}>You decide to skip the interview and chase your true passion.</p>
                 <p className={"message-assistant-storyText"} style={{display:(storyIdx >= endOfIntro + 9) ? 'inherit' : 'none', color:'black'}}>This isn't the end – it's the first frame of a whole new picture.</p>
                 {
                     status === 'loading' && <LoadingDots />

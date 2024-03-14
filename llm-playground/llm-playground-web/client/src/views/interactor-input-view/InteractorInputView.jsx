@@ -89,8 +89,8 @@ export default function InteractorInputView() {
                 alignItems: 'center',
             }}
         >
-            <div><button onClick={continueStory} style={{display: ((storyIdx < endOfIntro || storyIdx >= startOfEnding) && storyIdx < endOfIntro + 9) ? 'inherit' : 'none', margin:'auto'}}>{GetActionButtonText()}</button></div>
-            <div style={{display: (storyIdx < endOfIntro || DidPassAllStrangers()) ? 'none': 'inherit', fontSize: 18}}>What do you want to say?&ensp;</div><input
+            <div><button onClick={continueStory} style={{display: ((storyIdx < endOfIntro || storyIdx >= startOfEnding) && storyIdx < endOfIntro + 9) ? 'inherit' : 'none', margin:'auto', fontFamily:'Helvetica'}}>{GetActionButtonText()}</button></div>
+            <div style={{display: (storyIdx < endOfIntro || DidPassAllStrangers()) ? 'none': 'inherit', fontSize: 23, fontFamily:'Helvetica'}}>What do you &nbsp;<strong>want</strong>&nbsp; to say?&ensp;</div><input
                 id="interactor-text-input"
                 value={inputMessage}
                 onKeyDown={e => { if (e.key === 'Enter') send() }}
