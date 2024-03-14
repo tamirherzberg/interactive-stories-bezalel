@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { useAppState, useSetAppState } from "../../app-state/AppStateProvider";
 import "./interactor-input-styles.css";
 import { SETTINGS } from "../../../settings";
@@ -56,6 +56,25 @@ export default function InteractorInputView() {
         return curStrangerIdx >= 2;
     }
 
+    function GetActionButtonText() {
+        switch (storyIdx) {
+            case endOfIntro + 1:
+                return "Get into the restrooms"
+            case endOfIntro + 4:
+                return "Smile"
+            case endOfIntro + 5:
+                return "Sigh"
+            case endOfIntro + 6:
+                return "But I worked so hard to get there..."
+            case endOfIntro + 7:
+                return "Leave the restrooms"
+            case endOfIntro + 8:
+                return "Take a deep breath"
+            default:
+                return "Breath"
+        }
+    }
+
     return (
         <div
             id="interactor-box"
@@ -70,7 +89,7 @@ export default function InteractorInputView() {
                 alignItems: 'center',
             }}
         >
-            <div><button onClick={continueStory} style={{display: (storyIdx < endOfIntro || storyIdx >= startOfEnding) ? 'inherit' : 'none', margin:'auto'}}>Breath</button></div>
+            <div><button onClick={continueStory} style={{display: ((storyIdx < endOfIntro || storyIdx >= startOfEnding) && storyIdx < endOfIntro + 9) ? 'inherit' : 'none', margin:'auto'}}>{GetActionButtonText()}</button></div>
             <div style={{display: (storyIdx < endOfIntro || DidPassAllStrangers()) ? 'none': 'inherit', fontSize: 18}}>What do you want to say?&ensp;</div><input
                 id="interactor-text-input"
                 value={inputMessage}
@@ -78,7 +97,7 @@ export default function InteractorInputView() {
                 onChange={e => setAppState({ inputMessage: e.target.value })}
                 style={{display: (storyIdx < endOfIntro || DidPassAllStrangers()) ? 'none': 'inherit'}}
             />
-            <button onClick={send} style={{display: (storyIdx < endOfIntro || DidPassAllStrangers()) ? 'none': 'inherit', marginInline: '5px', fontSize: 20}}>Send</button>
+            <button onClick={send} style={{display: 'none'}}>Send</button>
             {
                 status === 'error' && 'Something is broken 😵‍💫'
             }
