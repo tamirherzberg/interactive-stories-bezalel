@@ -49,13 +49,12 @@ export default function StoryBodyView() {
                         />
                     )
                 })}
-                {/* TODO: ADD POSITIVE INNER VOICE*/}
                 <p className={"message-assistant-storyText"} style={{display:(storyIdx >= endOfIntro + 2) ? 'inherit' : 'none', color:'black'}}>You splash water on your face, trying to calm down.</p>
                 <p className={"message-assistant-storyText"} style={{display:(storyIdx >= endOfIntro + 3) ? 'inherit' : 'none', color:'black'}}>As you look into the mirror, something shifts within you.</p>
                 <p className={"message-assistant-storyText"} style={{display:(storyIdx >= endOfIntro + 4) ? 'inherit' : 'none', color:'black'}}>{endingLine}</p>
                 <p className={"message-assistant-storyText"} style={{display:(storyIdx >= endOfIntro + 5) ? 'inherit' : 'none', color:'black'}}>The only one who's really judging you is yourself.</p>
                 <p className={"message-assistant-storyText"} style={{display:(storyIdx >= endOfIntro + 6) ? 'inherit' : 'none', color:'black'}}>Suddenly, the pressure to work for a prestigious corporate to prove your worth seems so pointless.</p>
-                <p className={"message-assistant-storyText"} style={{display:(storyIdx >= endOfIntro + 7) ? 'inherit' : 'none', color:'black'}}>You decide to skip the interview and instead chase your true passion - photography.</p>
+                <p className={"message-assistant-storyText"} style={{display:(storyIdx >= endOfIntro + 7) ? 'inherit' : 'none', color:'black'}}>You decide to skip the interview and chase your true passion - photography.</p>
                 <p className={"message-assistant-storyText"} style={{display:(storyIdx >= endOfIntro + 8) ? 'inherit' : 'none', color:'black'}}>This isn't the end – it's the first frame of a whole new picture.</p>
                 {
                     status === 'loading' && <LoadingDots />
