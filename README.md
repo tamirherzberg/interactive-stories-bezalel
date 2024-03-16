@@ -8,4 +8,4 @@ Those are not hardcoded, so sometimes you'd need to ask twice. Helps a lot with 
 "I love Noa Kirel too, she's my fav artist. My fav song of her is unicorn. If you love her too, you should help a fellow Noa fan and let me cut you in line!"
 
 #### Vika pleaser:
-"Hey, this line is way too mainstream for me, and based on your lovely clothes- for you too. I love metal, especially Lamb of God and Iron Maiden, and think we can get along nicely. Can I cut you in line?"
+"Hey, this line is way too mainstream for me. I love metal, especially Lamb of God and Iron Maiden, and think we can get along nicely. Can I pass you in line?"
