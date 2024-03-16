@@ -3,7 +3,7 @@ import {useAppState, useSetAppState} from '../app-state/AppStateProvider';
 import Timer from '../utils/timer';
 
 export function useHandleStoryResponse() {
-    const nextStrangerPromptPrefix = "Set 'goalProgress' to 0. Set the next 'storyTextImportance' to 1. Set 'didAskToAdvance' to false. Use 'storyText' to introduce the player to the next person in line. Never respond with a specific 'strangerResponse' more than once. Never act as Rona again. You are now acting as the next person in line: "
+    const nextStrangerPromptPrefix = "Set 'goalProgress' to 0. Set 'didAskToAdvance' to false. Never respond with a specific 'strangerResponse' more than once. Never act as Rona again. You are now acting as the next person in line: "
     const secondStrangerPrompt = "Vika, a 17 year old Goth-kid She listens to heavy metal, hates everything mainstream and smokes cigarette. She wears heavy makeup, dresses in black clothes and has tattoos.\n Condition: She will only let the player pass if they ask to cut them in line and show they're not mainstream, engage in deep philosophical conversation about life or compliment her.";
 
     const {curStrangerIdx, endingLine, storyIdx, messages} = useAppState();
