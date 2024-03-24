@@ -1,4 +1,4 @@
-# interactive-stories-bezalel
+# Out of Line
 
 Based on Course Materials for Interactive Stories @ Visual Communication @ Bezalel
  
